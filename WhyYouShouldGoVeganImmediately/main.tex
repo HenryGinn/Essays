@@ -1,0 +1,175 @@
+\documentclass[hidelinks, 11 pt]{article}
+
+\usepackage[a4paper, top=25.4mm, bottom=25.4mm, left=19.1mm, right=19.1mm, footskip=8mm]{geometry}
+\usepackage[skip=7pt]{parskip}
+\usepackage[list=true, listformat=simple]{subcaption}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{float}
+\usepackage{fancyhdr}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage[nameinlink]{cleveref}
+\usepackage{lipsum}
+\usepackage{silence}
+
+\WarningFilter{caption}{Unused \captionsetup}
+
+% References
+\Crefname{figure}{}{}
+\newcommand\crefrangeconjunction{--}
+
+% ########### Header and footer ###########
+
+% Defining marks
+\renewcommand{\sectionmark}[1]{\gdef\leftmark{#1}}
+\renewcommand{\subsectionmark}[1]{\markright{#1}}
+
+\fancypagestyle{coverpage}{
+    \fancyhf{}
+    \fancyfoot[C]{}
+    \renewcommand{\headrulewidth}{0pt}
+}
+
+\fancypagestyle{firstpage}{
+    \fancyhf{}
+    \fancyfoot[C]{\thepage}
+    \renewcommand{\headrulewidth}{0pt}
+}
+
+\fancypagestyle{fancy}{
+    \fancyhf{}
+    \fancyhead[L]{\nouppercase{\leftmark}}
+    \fancyhead[R]{\nouppercase{\rightmark}}
+    \fancyfoot[C]{\thepage}
+}
+
+\setlength{\headheight}{13.6pt}
+
+% Use fancy page style unless otherwise specified
+\pagestyle{fancy}
+
+% ########### Maths environment spacing ###########
+
+% Redefining space around equation environment
+\let\equationOriginal\equation
+\let\endequationOriginal\endequation
+\renewenvironment{equation}{
+    \vspace{-4mm}
+    \equationOriginal}
+{
+\endequationOriginal
+\vspace{-7mm}
+}
+
+% Redefining space around align environment
+\let\alignOriginal\align
+\let\endalignOriginal\endalign
+\renewenvironment{align}{
+    \vspace{-7mm}
+    \alignOriginal}
+{
+\endalignOriginal
+\vspace{-8mm}
+}
+
+% Redefining space around subequations environment
+\let\subequationsOriginal\subequations
+\let\endsubequationsOriginal\endsubequations
+\renewenvironment{subequations}{
+    \subequationsOriginal}
+{
+\endsubequationsOriginal
+\vspace{1mm}
+}
+
+% ########### Other ###########
+
+% Redefining space above figure
+\let\oldfigure\figure
+\let\endoldfigure\endfigure
+\renewenvironment{figure}[1][]{
+    \vspace{-1mm}
+    \oldfigure[#1]
+}{
+    \endoldfigure
+}
+
+% Redefining space around figure captions
+\captionsetup[figure]{aboveskip=2mm, belowskip=-2mm}
+\captionsetup[subfigure]{aboveskip=2mm, belowskip=1mm}
+
+
+% Biblography spacing
+\let\OLDthebibliography\thebibliography
+\renewcommand\thebibliography[1]{
+  \OLDthebibliography{#1}
+  \setlength{\parskip}{0pt}
+  \setlength{\itemsep}{5pt plus 0.3ex}
+}
+
+% Spacing around headings
+\setlength{\parindent}{0pt}
+\titlespacing*{\section}{0pt}{10pt}{5pt}
+\titlespacing*{\subsection}{0pt}{10pt}{5pt}
+
+% Other spacing
+\setlength{\parindent}{0mm} % Start of paragraph line indent
+\setlength{\skip\footins}{5mm} % Footnotes
+
+% Tables
+\renewcommand{\thetable}{\Roman{table}} % Count in roman numerals
+\newcommand{\myhline}{\hline\noalign{\vskip 2pt}} % Space after hline
+
+% Change the figure and table captions
+\captionsetup[table]{labelfont=bf, labelsep=period}
+\captionsetup[figure]{labelfont=bf, labelsep=period}
+
+% Dark mode pdf
+%\pagecolor[rgb]{0,0,0} %black
+%\color[rgb]{0.9,0.9,0.9} %grey 
+
+\begin{document}
+
+\addtolength{\topmargin}{-1.6pt}
+\thispagestyle{firstpage}
+
+\begin{center}
+    \vspace*{-20mm}
+    \huge Why You Should Go Vegan Immediately  \\
+    \vspace{5mm}
+    \large Henry Ginn  \\
+    \vspace{3 mm}
+    \large \today
+\end{center}
+\vspace{5mm}
+
+\input{Introduction}
+\input{PhilosophicalArguments}
+\input{EmotionalArguments}
+\input{RefutationsAndFacts}
+\input{Conclusion}
+
+\clearpage
+
+\fancyhf{}
+\fancyhead[L]{References}
+\fancyhead[R]{}
+\fancyfoot[C]{\thepage}
+
+\bibliographystyle{unsrtHenry.bst}
+\bibliography{bibliography.bib}
+
+\clearpage
+
+\pagestyle{fancy}
+\appendix
+
+\clearpage
+
+\end{document}
