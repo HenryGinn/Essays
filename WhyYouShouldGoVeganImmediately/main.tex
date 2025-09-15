@@ -18,11 +18,6 @@
 \usepackage{lipsum}
 \usepackage{silence}
 
-\WarningFilter{caption}{Unused \captionsetup}
-
-% References
-\Crefname{figure}{}{}
-\newcommand\crefrangeconjunction{--}
 
 \widowpenalty=1000
 
@@ -51,69 +46,10 @@
     \fancyfoot[C]{\thepage}
 }
 
-\setlength{\headheight}{13.6pt}
-
-% Use fancy page style unless otherwise specified
 \pagestyle{fancy}
 
-% ########### Maths environment spacing ###########
-
-% Redefining space around equation environment
-\let\equationOriginal\equation
-\let\endequationOriginal\endequation
-\renewenvironment{equation}{
-    \vspace{-4mm}
-    \equationOriginal}
-{
-\endequationOriginal
-\vspace{-7mm}
-}
-
-% Redefining space around align environment
-\let\alignOriginal\align
-\let\endalignOriginal\endalign
-\renewenvironment{align}{
-    \vspace{-7mm}
-    \alignOriginal}
-{
-\endalignOriginal
-\vspace{-8mm}
-}
-
-% Redefining space around subequations environment
-\let\subequationsOriginal\subequations
-\let\endsubequationsOriginal\endsubequations
-\renewenvironment{subequations}{
-    \subequationsOriginal}
-{
-\endsubequationsOriginal
-\vspace{1mm}
-}
 
 % ########### Other ###########
-
-% Redefining space above figure
-\let\oldfigure\figure
-\let\endoldfigure\endfigure
-\renewenvironment{figure}[1][]{
-    \vspace{-1mm}
-    \oldfigure[#1]
-}{
-    \endoldfigure
-}
-
-% Redefining space around figure captions
-\captionsetup[figure]{aboveskip=2mm, belowskip=-2mm}
-\captionsetup[subfigure]{aboveskip=2mm, belowskip=1mm}
-
-
-% Biblography spacing
-\let\OLDthebibliography\thebibliography
-\renewcommand\thebibliography[1]{
-  \OLDthebibliography{#1}
-  \setlength{\parskip}{0pt}
-  \setlength{\itemsep}{5pt plus 0.3ex}
-}
 
 % Spacing around headings
 \setlength{\parindent}{0pt}
@@ -123,14 +59,7 @@
 % Other spacing
 \setlength{\parindent}{0mm} % Start of paragraph line indent
 \setlength{\skip\footins}{5mm} % Footnotes
-
-% Tables
-\renewcommand{\thetable}{\Roman{table}} % Count in roman numerals
-\newcommand{\myhline}{\hline\noalign{\vskip 2pt}} % Space after hline
-
-% Change the figure and table captions
-\captionsetup[table]{labelfont=bf, labelsep=period}
-\captionsetup[figure]{labelfont=bf, labelsep=period}
+\setlength{\headheight}{13.6pt}
 
 % Dark mode pdf
 %\pagecolor[rgb]{0,0,0} %black
@@ -156,22 +85,5 @@
 \input{EmotionalArguments}
 \input{CounterArguments}
 \input{Conclusion}
-
-\clearpage
-
-\fancyhf{}
-\fancyhead[L]{References}
-\fancyhead[R]{}
-\fancyfoot[C]{\thepage}
-
-\bibliographystyle{unsrtHenry.bst}
-\bibliography{bibliography.bib}
-
-\clearpage
-
-\pagestyle{fancy}
-\appendix
-
-\clearpage
 
 \end{document}
