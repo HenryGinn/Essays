@@ -1,6 +1,8 @@
+% What standard do you expect from others, and with the information you have, are you holding yourself to that standard?
+
 \documentclass[hidelinks, 11 pt]{article}
 
-\usepackage[a4paper, top=25.4mm, bottom=25.4mm, left=19.1mm, right=19.1mm, footskip=8mm]{geometry}
+\usepackage[a4paper, top=25mm, bottom=19mm, left=19mm, right=19mm, footskip=8mm]{geometry}
 \usepackage[skip=7pt]{parskip}
 \usepackage[list=true, listformat=simple]{subcaption}
 \usepackage{graphicx}
@@ -19,7 +21,8 @@
 \usepackage{silence}
 
 
-\widowpenalty=1000
+\widowpenalty=10000
+\clubpenalty=10000
 
 % ########### Header and footer ###########
 
@@ -42,7 +45,7 @@
 \fancypagestyle{fancy}{
     \fancyhf{}
     \fancyhead[L]{\nouppercase{\leftmark}}
-    \fancyhead[R]{\nouppercase{\rightmark}}
+    \fancyhead[R]{Why You Should Go Vegan Immediately}
     \fancyfoot[C]{\thepage}
 }
 
@@ -62,8 +65,8 @@
 \setlength{\headheight}{13.6pt}
 
 % Dark mode pdf
-%\pagecolor[rgb]{0,0,0} %black
-%\color[rgb]{0.9,0.9,0.9} %grey 
+\pagecolor[rgb]{0.15,0.15,0.15} %black
+\color[rgb]{0.7,0.7,0.7} %grey 
 
 \begin{document}
 
